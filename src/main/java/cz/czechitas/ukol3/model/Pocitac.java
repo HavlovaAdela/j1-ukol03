@@ -53,34 +53,31 @@ public class Pocitac {
     }
 
 
-    public Boolean zapniSe() {
-        if (jeZapnuty == true) {
+    public void zapniSe() {
+        if (jeZapnuty) {
             err.println("Počítač je už zapnutý, nezapínej ho podruhé, je zapnutý = " + jeZapnuty);
-            return jeZapnuty;
+
         } else if (cpu == null || ram == null || pevnyDisk == null) {
             err.println("Počítači chybí minimálně jedna z těcto součástí - pevný disk, procesor,paměť. Proto nelze zapnout.");
         } else {
             jeZapnuty = true;
             System.out.println("Počítač se zapnul, je zapnutý = " + jeZapnuty);
-            return jeZapnuty;
+
         }
 
-        return jeZapnuty;
     }
 
-    public Boolean vypniSe() {
-        if (jeZapnuty == true) {
+    public void vypniSe() {
+        if (jeZapnuty) {
             jeZapnuty = false;
             System.out.println("Počítač se vypnul, je zapnutý = " + jeZapnuty);
-            return jeZapnuty;
         } else {
             System.out.println("Počítač je už vypnutý, je zapnutý = " + jeZapnuty);
-            return jeZapnuty;
         }
     }
 
     public void vytvorSouborOVelikosti(long velikost) {
-        if (jeZapnuty == true) {
+        if (jeZapnuty) {
             if (velikost > (pevnyDisk.getKapacitaDisku() - pevnyDisk.getVyuziteMisto()) && velikost > (druhyDisk.getKapacitaDisku() - druhyDisk.getVyuziteMisto())) {
                 err.println("Ani na jednom disku není dost místa.");
             } else if (velikost <= pevnyDisk.getKapacitaDisku() - pevnyDisk.getVyuziteMisto()) {
@@ -94,7 +91,7 @@ public class Pocitac {
     }
 
     public void vymazSouboroVelikosti(long velikost) {
-        if (jeZapnuty == true) {
+        if (jeZapnuty) {
             if ((pevnyDisk.getVyuziteMisto() - velikost) < 0 && (druhyDisk.getVyuziteMisto() - velikost) < 0) {
                 err.println("Nemůžu vymazat soubor větší než kolik mám zapsáno dat.");
             } else if (velikost <= pevnyDisk.getVyuziteMisto()) {
